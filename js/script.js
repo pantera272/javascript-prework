@@ -25,34 +25,42 @@ function getMoveName(argMoveId)
 function displayResult (argComputerMove, argPlayerMove)
 {
 	if (argPlayerMove != 'nieznany ruch'){
-	if ((argComputerMove == 'papier' && argPlayerMove == 'papier') || (argComputerMove == 'kamień' && argPlayerMove == 'kamień') || (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce')){
-		printMessage('Remis!');	//remis
-	} else if ((argComputerMove == 'papier' && argPlayerMove == 'kamień') || (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') || (argComputerMove == 'nożyce' && argPlayerMove == 'papier')) {
-		printMessage('Komputer wygrywa!');
+		if ((argComputerMove == 'papier' && argPlayerMove == 'papier') || (argComputerMove == 'kamień' && argPlayerMove == 'kamień') || (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce')){
+			printMessage('Remis!');	//remis
+		} else if ((argComputerMove == 'papier' && argPlayerMove == 'kamień') || (argComputerMove == 'kamień' && argPlayerMove == 'nożyce') || (argComputerMove == 'nożyce' && argPlayerMove == 'papier')) {
+			printMessage('Komputer wygrywa!');
+		} else {
+			printMessage("Wygrałeś!");
+		}
 	} else {
-		printMessage("Wygrałeś!");
+		printMessage('Gracz nie zagrał');
 	}
-} else {
-	printMessage('Gracz nie zagrał');
-}
 }
 
-let randomFraction = Math.random();
-let calculation = randomFraction * 3 + 1;
-let roundNumber = Math.floor(calculation);
+function playGame(playerClic)
+{
+	clearMessages();
+    let randomFraction = Math.random();
+    let calculation = randomFraction * 3 + 1;
+    let roundNumber = Math.floor(calculation);
 
-console.log('Wybór komputera: ' + roundNumber);
+    console.log('Wybór komputera: ' + roundNumber);
 
-let computerMove = getMoveName(roundNumber);
+    let computerMove = getMoveName(roundNumber);
 
-printMessage('Komputer zagrał ' + computerMove);
+    printMessage('Komputer zagrał ' + computerMove);
 
-//wybor gracza
-let playerInput = prompt('1 Papier, 2 Kamień, 3 Nożyce');
-console.log('Gracz wpisał ' + playerInput);
+    //wybor gracza
+    let playerInput = playerClic;
+    console.log('Gracz wpisał ' + playerInput);
 
-let playerMove = getMoveName(playerInput);
+    let playerMove = getMoveName(playerInput);
 
-printMessage('Wybrałeś ' + playerMove);
+    printMessage('Wybrałeś ' + playerMove);
 
-displayResult(computerMove, playerMove);
+    displayResult(computerMove, playerMove);
+}
+
+document.getElementById('papier').addEventListener('click', function(){playGame(1);});
+document.getElementById('kamien').addEventListener('click', function(){playGame(2);});
+document.getElementById('nozyce').addEventListener('click', function(){playGame(3);});
