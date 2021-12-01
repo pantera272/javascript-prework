@@ -25,3 +25,19 @@ if (roundNumber == '1'){
 }
 
 printMessage('Komputer zagrał ' +computerMove);
+
+//wybor gracza
+let playerInput = prompt('1 Papier, 2 Kamień, 3 Nożyce');
+console.log('Gracz wpisał' + playerInput);
+
+let playerMove = 'nieznany ruch';
+
+if (playerInput == '1'){
+	playerMove = 'papier';
+} else if (playerInput == '2'){
+	playerMove = 'kamień';
+} else if (playerInput =='3'){
+	playerMove = 'nożyce';
+}
+
+printMessage('Wybrałeś ' + playerMove);
