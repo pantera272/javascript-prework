@@ -8,10 +8,20 @@ function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
 
-let computerMove = 'kamień';
+let randomFraction = Math.random();
+let calculation = randomFraction * 3 + 1;
+let roundNumber = Math.floor(calculation);
 
-printMessage('Zagrałem ' + computerMove + '! Jeśli Twój ruch to papier, to wygrywasz!');
+console.log('Wybór komputera: ' + roundNumber);
 
-let playerMove = 'papier';
-printMessage('Zagrałeś ' + playerMove);
-printMessage('Wygrałeś!');
+let computerMove = 'nie wybrano'
+
+if (roundNumber == '1'){
+	computerMove = 'papier';
+} else if (roundNumber == '2'){
+	computerMove = 'kamień';
+} else if (roundNumber =='3'){
+	computerMove = 'nożyce';
+}
+
+printMessage('Komputer zagrał ' +computerMove);
