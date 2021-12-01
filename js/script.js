@@ -41,3 +41,16 @@ if (playerInput == '1'){
 }
 
 printMessage('Wybrałeś ' + playerMove);
+
+//wynik
+if (playerMove != 'nieznany ruch'){
+	if ((computerMove == 'papier' && playerMove == 'papier') || (computerMove == 'kamień' && playerMove == 'kamień') || (computerMove == 'nożyce' && playerMove == 'nożyce')){
+		printMessage('Remis!');	//remis
+	} else if ((computerMove == 'papier' && playerMove == 'kamień') || (computerMove == 'kamień' && playerMove == 'nożyce') || (computerMove == 'nożyce' && playerMove == 'papier')) {
+		printMessage('Komputer wygrywa!');
+	} else {
+		printMessage("Wygrałeś!");
+	}
+} else {
+	printMessage('Gracz nie zagrał');
+}
