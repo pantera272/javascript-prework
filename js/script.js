@@ -1,5 +1,6 @@
+{
 function printMessage(msg){
-	let div = document.createElement('div');
+	const div = document.createElement('div');
 	div.innerHTML = msg;
 	document.getElementById('messages').appendChild(div);
 }
@@ -8,7 +9,7 @@ function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
 
-function getMoveName(argMoveId)
+const getMoveName = function(argMoveId)
 {
 	if (argMoveId == '1'){
         return 'papier';
@@ -22,7 +23,7 @@ function getMoveName(argMoveId)
 	return 'nieznany ruch';
 }
 
-function displayResult (argComputerMove, argPlayerMove)
+const displayResult = function(argComputerMove, argPlayerMove)
 {
 	if (argPlayerMove != 'nieznany ruch'){
 		if ((argComputerMove == 'papier' && argPlayerMove == 'papier') || (argComputerMove == 'kamień' && argPlayerMove == 'kamień') || (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce')){
@@ -37,24 +38,24 @@ function displayResult (argComputerMove, argPlayerMove)
 	}
 }
 
-function playGame(playerClic)
+const playGame = function(playerClic)
 {
 	clearMessages();
-    let randomFraction = Math.random();
-    let calculation = randomFraction * 3 + 1;
-    let roundNumber = Math.floor(calculation);
+    const randomFraction = Math.random();
+    const calculation = randomFraction * 3 + 1;
+    const roundNumber = Math.floor(calculation);
 
     console.log('Wybór komputera: ' + roundNumber);
 
-    let computerMove = getMoveName(roundNumber);
+    const computerMove = getMoveName(roundNumber);
 
     printMessage('Komputer zagrał ' + computerMove);
 
     //wybor gracza
-    let playerInput = playerClic;
+    const playerInput = playerClic;
     console.log('Gracz wpisał ' + playerInput);
 
-    let playerMove = getMoveName(playerInput);
+    const playerMove = getMoveName(playerInput);
 
     printMessage('Wybrałeś ' + playerMove);
 
@@ -64,3 +65,4 @@ function playGame(playerClic)
 document.getElementById('papier').addEventListener('click', function(){playGame(1);});
 document.getElementById('kamien').addEventListener('click', function(){playGame(2);});
 document.getElementById('nozyce').addEventListener('click', function(){playGame(3);});
+}
